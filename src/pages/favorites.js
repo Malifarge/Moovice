@@ -7,37 +7,28 @@ import NavBar from "../components/navBar"
 const Favorites = () =>{
 
     const [movies, setMovies] = useState([])
-    const [moviesList,setMoviesList] = useState([])
-
-    const fetchMovies = async () => {
-        const response = await fetch(`https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=fe35d13ec177e4465861d822f792c0a9`)
-        const data = await response.json()
-        setMoviesList(data.results)
-      }
-
+    
     useEffect(()=>{
-    fetchMovies()
-  },[]
-  )
-
-  useEffect(()=>{
-    let Ids
-    const newMovie = movies
+        let Ids
+    
         if (localStorage.favoriteIds){
             const localStorageIds= localStorage.getItem("favoriteIds")
-       Ids = JSON.parse(localStorageIds)
-        }else{
-           Ids=[]
+            Ids = JSON.parse(localStorageIds)
+            const favorite = [...movies]
+            Ids.forEach((id)=>{
+             fetchFavorite(id,favorite)
+       })
         }
-    Ids.forEach((id)=>{
-        const currentMovie = moviesList.find(movieList => movieList.id === Number(id))
-        if(currentMovie){
-            newMovie.push(currentMovie)
-            setMovies(newMovie)
-        }
-    })
-  },[moviesList]
-  )
+    },[])
+
+    const fetchFavorite = async (ID, favorite) => {
+        
+        const response = await fetch(`https://api.themoviedb.org/3/movie/${ID}?api_key=fe35d13ec177e4465861d822f792c0a9`)
+        const data = await response.json()
+        favorite.push(data)
+        setMovies(favorite)
+      }
+
 
 
     return(
@@ -47,10 +38,10 @@ const Favorites = () =>{
         {movies.map((movie)=>{
           return  <article key={movie.title}>
             <img src={`https://image.tmdb.org/t/p/w300/${movie.poster_path}`} alt={movie.title}/>
-        <h2>{movie.title}</h2>
-        <p>release : {movie.release_date}</p>
-        <h3>About</h3>
-        <p>{movie.overview}</p>
+            <h2>{movie.title}</h2>
+            <p>release : {movie.release_date}</p>
+            <h3>About</h3>
+            <p>{movie.overview}</p>
           </article>
         })}
         </>

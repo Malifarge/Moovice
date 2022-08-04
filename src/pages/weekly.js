@@ -23,12 +23,37 @@ const Weekly = () =>{
         fetchMoviesWeek()
     },[])
 
+    const handleAddClick = (ID) =>{
+
+        let Ids
+    
+        if (localStorage.favoriteIds){
+            const localStorageIds= localStorage.getItem("favoriteIds")
+            Ids = JSON.parse(localStorageIds)
+        }else{
+           Ids=[]
+        }
+        if(!Ids.includes(ID)){
+            Ids.push(ID)
+        }
+        const stringifiedIds = JSON.stringify(Ids)
+        localStorage.setItem('favoriteIds', stringifiedIds)
+    }
+
     return(
         <>
         <NavBar/>
         <section className="weekly">
         <h1>Weekly</h1>
-        <Card movies={movies}/>
+        <section className="moviesWeekly">
+        {movies.map((movie)=>{
+            return <article className="weeklyArticle">
+                <img src={`https://image.tmdb.org/t/p/w300/${movie.poster_path}`} alt={movie.title}/>
+                <h2>{movie.title}</h2>
+                <button onClick={()=>handleAddClick(movie.id)}>Add to favorite</button>
+            </article>
+        })}
+        </section>
         </section>
         </>
     )

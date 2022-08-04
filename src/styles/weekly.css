@@ -7,3 +7,17 @@
     color: black;
 }
 
+.weeklyArticle{
+    flex-direction: column;
+    width: 150px;
+    border-radius: 0;
+    text-align: center;
+}
+
+.moviesWeekly{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    background: none;
+    gap: 20px;
+}

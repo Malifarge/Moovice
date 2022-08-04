@@ -25,15 +25,18 @@ const Card = (props) =>{
 
    return <>
    { props.movies.map((movie)=>{
-        // console.log(movie.id);
         return <article key={movie.title}>
         <img src={`https://image.tmdb.org/t/p/w300/${movie.poster_path}`} alt={movie.title}/>
+        <div>
         <h2>{movie.title}</h2>
         <p>release : {movie.release_date}</p>
         <h3>About</h3>
         <p>{movie.overview}</p>
-
-        <button onClick={()=>handleAddClick(movie.id)}>Add to favorite</button>
+        <div className="button">
+            <button onClick={()=>handleAddClick(movie.id)}>Add to favorite</button>
+        </div>
+        
+        </div>
         </article>
     })}
    </>

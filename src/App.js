@@ -4,7 +4,6 @@ import Weekly from './pages/weekly';
 import Popular from './pages/popular';
 import Favorites from './pages/favorites';
 import NotFound from './pages/notFound';
-import './styles/style.css'
 
 const App = () => {
   return (

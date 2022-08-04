@@ -14,7 +14,7 @@ const App = () => {
         <Route path='/weekly' element={<Weekly />} />
         <Route path='/popular' element={<Popular />}/>
         <Route path='/favorites' element={<Favorites />} />
-        <Route path='/*' element={<NotFound />} />
+        <Route path='*' element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   )

@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import NavBar from "../components/navBar"
-import Card from "../components/card";
 import '../styles/weekly.css'
 
 const Weekly = () =>{

@@ -33,6 +33,16 @@ const Favorites = () =>{
         setMovies(promiseAllResult)
       }
 
+      const handleRemoveClick = (id) => {
+        const localStorageIds= localStorage.getItem("favoriteIds")
+        const Ids = JSON.parse(localStorageIds)
+        const index = Ids.indexOf(id)
+        Ids.splice(index,1)
+        const stringifiedIds = JSON.stringify(Ids)
+        localStorage.setItem('favoriteIds', stringifiedIds)
+        fetchFavorite(Ids)
+      }
+
 
 
     return(
@@ -49,6 +59,9 @@ const Favorites = () =>{
             <p>release : {movie.release_date}</p>
             <h3>About</h3>
             <p>{movie.overview}</p>
+            <div className="button">
+              <button onClick={() => handleRemoveClick(movie.id)}>Remove to Favorite</button>
+            </div>
             </div>
           </article>
         })}

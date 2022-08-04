@@ -9,7 +9,7 @@ const Card = (props) =>{
     
         if (localStorage.favoriteIds){
             const localStorageIds= localStorage.getItem("favoriteIds")
-       Ids = JSON.parse(localStorageIds)
+            Ids = JSON.parse(localStorageIds)
         }else{
            Ids=[]
         }

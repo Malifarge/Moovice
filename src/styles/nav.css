@@ -5,13 +5,23 @@ nav{
     padding: 20px;
 }
 
+.mleft{
+    margin-left: 20px;
+}
+
 nav a{
     color: rgba(255, 255, 255, 0.61);
     text-decoration: none;
-    margin-left: 20px;
 }
 
 nav a:hover{
     color: white;
     text-decoration: underline 2px #FC7987;
+}
+
+@media (max-width: 768px) {
+    nav{
+        text-align: center;
+
+    }
 }

@@ -2,6 +2,7 @@
 .favorie{
     background: url('../images/popcorn-1085072.jpg');
     background-position: center;
+    min-height: 100vh;
 }
 
 .favorie h1{

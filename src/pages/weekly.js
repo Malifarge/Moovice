@@ -5,7 +5,7 @@ const Weekly = () =>{
     return(
         <>
         <NavBar/>
-        <h1>Weekly</h1>
+        <h1 className="attente">Weekly</h1>
         </>
     )
 }

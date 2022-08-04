@@ -11,23 +11,26 @@ const Favorites = () =>{
     
     useEffect(()=>{
         let Ids
-    
         if (localStorage.favoriteIds){
             const localStorageIds= localStorage.getItem("favoriteIds")
             Ids = JSON.parse(localStorageIds)
-            const favorite = [...movies]
-            Ids.forEach((id)=>{
-             fetchFavorite(id,favorite)
-       })
+            fetchFavorite(Ids)
         }
     },[])
 
-    const fetchFavorite = async (ID, favorite) => {
+    const fetchMovie = async (ID) => {
         
         const response = await fetch(`https://api.themoviedb.org/3/movie/${ID}?api_key=fe35d13ec177e4465861d822f792c0a9`)
         const data = await response.json()
-        favorite.push(data)
-        setMovies(favorite)
+        return data
+      }
+
+      const fetchFavorite = async (ids) =>{
+        const promises = ids.map(id => {
+          return fetchMovie(id)
+        })
+        const promiseAllResult = await Promise.all(promises)
+        setMovies(promiseAllResult)
       }
 
 

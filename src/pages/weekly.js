@@ -46,7 +46,7 @@ const Weekly = () =>{
         <h1>Weekly</h1>
         <section className="moviesWeekly">
         {movies.map((movie)=>{
-            return <article className="weeklyArticle">
+            return <article className="weeklyArticle" key={movie.title}>
                 <img src={`https://image.tmdb.org/t/p/w300/${movie.poster_path}`} alt={movie.title}/>
                 <h2>{movie.title}</h2>
                 <button onClick={()=>handleAddClick(movie.id)}>Add to favorite</button>

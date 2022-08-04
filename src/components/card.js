@@ -13,10 +13,7 @@ const Card = (props) =>{
         }else{
            Ids=[]
         }
-        const newId= Ids.find((id)=>{
-            return id === ID
-        })
-        if(!newId){
+        if(!Ids.includes(ID)){
             Ids.push(ID)
         }
         const stringifiedIds = JSON.stringify(Ids)

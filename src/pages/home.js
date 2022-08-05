@@ -9,6 +9,7 @@ const Home = () =>{
     const [moviesNowPlaying,setMoviesNowPlaying]= useState([])
     const [moviesTopRated,setMoviesTopRated]= useState([])
     const [moviesUpComing,setMoviesUpComing]= useState([])
+    const [moviesLatest,setMoviesLatest] = useState([])
 
 
     const fetchMovies = async () => {
@@ -21,6 +22,9 @@ const Home = () =>{
         const responseUpcoming = await fetch (`https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKey}&language=en-US&page=1`)
         const dataUpcoming = await responseUpcoming.json()
         setMoviesUpComing(dataUpcoming.results)
+        const responseLatest = await fetch (`https://api.themoviedb.org/3/movie/latest?api_key=${apiKey}&language=en-US`)
+        const dataLatest = await responseLatest.json()
+        setMoviesLatest(dataLatest)
       }
 
     useEffect(()=>{
@@ -49,6 +53,13 @@ const Home = () =>{
         <NavBar/>
         <section className="home">
             <h1>Home</h1>
+
+            <h2>Latest</h2>
+            <article className="weeklyArticle">
+                {moviesLatest.poster_path ? <img src={`https://image.tmdb.org/t/p/w300/${moviesLatest.poster_path}`} alt={moviesLatest.title}/> : <img src="https://www.pngall.com/wp-content/uploads/1/Film-High-Quality-PNG.png" alt={moviesLatest.title}/>}
+                <h3>{moviesLatest.title}</h3>
+                <button onClick={()=>handleAddClick(moviesLatest.id)}>Add to favorite</button>
+            </article>
 
             <h2>Now playing</h2>
             <section className="playing">

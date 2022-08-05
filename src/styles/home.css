@@ -1,0 +1,16 @@
+
+.playing{
+    background: rgba(0, 0, 0, 0.687);
+    gap: 20px;
+    display: flex;
+    overflow: scroll;
+    height: 500px;
+}
+
+.home{
+    background: url("../images/film-1668918_1920.jpg")
+}
+
+.home h2{
+    color: white;
+}

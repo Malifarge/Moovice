@@ -6,6 +6,7 @@ import Favorites from './pages/favorites';
 import NotFound from './pages/notFound';
 import Movie from './pages/movie';
 import NavBar from './components/navBar';
+import Review from './pages/Review';
 
 const App = () => {
   return (
@@ -18,7 +19,9 @@ const App = () => {
         <Route path='/popular' element={<Popular />}/>
         <Route path='/favorites' element={<Favorites />} />
         <Route path='/movie/:id' element={<Movie />} />
+        <Route path='/Review/:id' element={<Review/>} />
         <Route path='*' element={<NotFound />} />
+        
       </Routes>
     </BrowserRouter>
   )

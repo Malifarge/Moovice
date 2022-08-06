@@ -42,21 +42,21 @@ const Home = () =>{
             <h2>Now playing</h2>
             <section className="playing">
                 {moviesNowPlaying.map((movie)=>{
-                  return  <CardPres movie={movie} />
+                  return  <CardPres movie={movie} key={movie.title}/>
                  })}
             </section>
 
             <h2>Top Rated</h2>
             <section className="playing">
                 {moviesTopRated.map((movie)=>{
-                    return  <CardPres movie={movie} />
+                    return  <CardPres movie={movie} key={movie.title}/>
                  })}
             </section>
 
             <h2>Upcoming</h2>
             <section className="playing">
                 {moviesUpComing.map((movie)=>{
-                    return  <CardPres movie={movie} />
+                    return  <CardPres movie={movie} key={movie.title}/>
                  })}
             </section>
 

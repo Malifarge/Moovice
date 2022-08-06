@@ -17,10 +17,6 @@ const Movie = ()=>{
         fetchMoviesDetail()
     },[])
 
-    useEffect(()=>{
-        console.log(movieDetail);
-    },[movieDetail])
-
     const fetchMoviesDetail = async () => {
         const responseMoviesDetail = await fetch(`https://api.themoviedb.org/3/movie/${param.id}?api_key=${apiKey}&language=en-US`)
         const dataMoviesDetail = await responseMoviesDetail.json()
@@ -30,7 +26,7 @@ const Movie = ()=>{
     return(
         <section className="Detail">
             <h1>Movie détails</h1>
-            <Card movie={movieDetail}/>
+            <Card movie={movieDetail} key={movieDetail.title}/>
         </section>
     )
 }

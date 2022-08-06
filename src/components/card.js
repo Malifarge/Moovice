@@ -1,4 +1,5 @@
 
+import { Link } from "react-router-dom";
 
 const Card = (props) =>{
 
@@ -21,7 +22,7 @@ const Card = (props) =>{
         localStorage.setItem('favoriteIds', stringifiedIds)
     }
 
-   return <><article key={title}>
+   return <><article>
         <img src={`https://image.tmdb.org/t/p/w300/${poster_path}`} alt={title}/>
         <div>
         <h2>{title}</h2>
@@ -29,6 +30,7 @@ const Card = (props) =>{
         <h3>About</h3>
         <p>{overview}</p>
         <div className="button">
+            <Link to={`/Review/${id}`}><button>Reviews</button></Link>
             <button onClick={()=>handleAddClick(id)}>Add to favorite</button>
         </div>
         

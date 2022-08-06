@@ -20,7 +20,7 @@ const CardPres = (props) =>{
         const stringifiedIds = JSON.stringify(Ids)
         localStorage.setItem('favoriteIds', stringifiedIds)
     }
-   return (<article className="weeklyArticle" key={title}>
+   return (<article className="weeklyArticle">
                         <Link to={`/movie/${id}`}><img src={`https://image.tmdb.org/t/p/w300/${poster_path}`} alt={title}/></Link>
                         <h3>{title}</h3>
                         <button onClick={()=>handleAddClick(id)}>Add to favorite</button>

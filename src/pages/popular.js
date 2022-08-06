@@ -24,7 +24,7 @@ const Popular = () =>{
         <section>
         <h1>Popular</h1>
         {movies.map((movie)=>{
-         return <Card movie={movie}/>
+         return <Card movie={movie} key={movie.title}/>
         })}
         </section>
         </>

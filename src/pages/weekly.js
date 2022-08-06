@@ -28,7 +28,7 @@ const Weekly = () =>{
         <h1>Weekly</h1>
         <section className="moviesWeekly">
         {movies.map((movie)=>{
-            return  <CardPres movie={movie} />
+            return  <CardPres movie={movie} key={movie.title}/>
         })}
         </section>
         </section>

@@ -1,7 +1,8 @@
 
+import { Link } from "react-router-dom";
+
 const CardPres = (props) =>{
     const {title,poster_path,id} = props.movie
-    console.log(props.movie);
 
     const handleAddClick = (ID) =>{
 
@@ -20,7 +21,7 @@ const CardPres = (props) =>{
         localStorage.setItem('favoriteIds', stringifiedIds)
     }
    return (<article className="weeklyArticle" key={title}>
-                        <img src={`https://image.tmdb.org/t/p/w300/${poster_path}`} alt={title}/>
+                        <Link to={`/movie/${id}`}><img src={`https://image.tmdb.org/t/p/w300/${poster_path}`} alt={title}/></Link>
                         <h3>{title}</h3>
                         <button onClick={()=>handleAddClick(id)}>Add to favorite</button>
                     </article>

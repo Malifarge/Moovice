@@ -2,7 +2,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 
 import { useState, useEffect } from "react"
-import NavBar from "../components/navBar"
 import '../styles/favorite.css'
 
 const Favorites = () =>{
@@ -47,7 +46,6 @@ const Favorites = () =>{
 
     return(
         <>
-        <NavBar/>
 
         <section className="favorie"> 
         <h1>Favorites</h1>

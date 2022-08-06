@@ -4,7 +4,13 @@
     gap: 20px;
     display: flex;
     overflow: scroll;
-    height: 500px;
+    height: 620px;
+}
+
+@media (max-width: 768px) {
+    .playing{
+        height: 400px;
+    }
 }
 
 .home{

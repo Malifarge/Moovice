@@ -1,7 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 
 import { useState, useEffect } from "react";
-import NavBar from "../components/navBar"
 import '../styles/home.css'
 import CardPres from "../components/cardpres";
 
@@ -34,7 +33,6 @@ const Home = () =>{
 
     return(
         <>
-        <NavBar/>
         <section className="home">
             <h1>Home</h1>
 

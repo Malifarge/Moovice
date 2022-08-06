@@ -4,15 +4,20 @@ import Weekly from './pages/weekly';
 import Popular from './pages/popular';
 import Favorites from './pages/favorites';
 import NotFound from './pages/notFound';
+import Movie from './pages/movie';
+import NavBar from './components/navBar';
 
 const App = () => {
   return (
+    
     <BrowserRouter>
+      <NavBar/>
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/weekly' element={<Weekly />} />
         <Route path='/popular' element={<Popular />}/>
         <Route path='/favorites' element={<Favorites />} />
+        <Route path='/movie/:id' element={<Movie />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
     </BrowserRouter>

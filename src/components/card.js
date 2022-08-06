@@ -2,6 +2,7 @@
 
 const Card = (props) =>{
 
+    const {title,poster_path,id,release_date,overview} = props.movie
 
     const handleAddClick = (ID) =>{
 
@@ -20,22 +21,19 @@ const Card = (props) =>{
         localStorage.setItem('favoriteIds', stringifiedIds)
     }
 
-   return <>
-   { props.movies.map((movie)=>{
-        return <article key={movie.title}>
-        <img src={`https://image.tmdb.org/t/p/w300/${movie.poster_path}`} alt={movie.title}/>
+   return <><article key={title}>
+        <img src={`https://image.tmdb.org/t/p/w300/${poster_path}`} alt={title}/>
         <div>
-        <h2>{movie.title}</h2>
-        <p>release : {movie.release_date}</p>
+        <h2>{title}</h2>
+        <p>release : {release_date}</p>
         <h3>About</h3>
-        <p>{movie.overview}</p>
+        <p>{overview}</p>
         <div className="button">
-            <button onClick={()=>handleAddClick(movie.id)}>Add to favorite</button>
+            <button onClick={()=>handleAddClick(id)}>Add to favorite</button>
         </div>
         
         </div>
         </article>
-    })}
    </>
 }
 

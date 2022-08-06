@@ -1,7 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 
 import { useState, useEffect } from "react";
-import NavBar from "../components/navBar"
 import '../styles/weekly.css'
 import CardPres from "../components/cardpres";
 
@@ -25,7 +24,6 @@ const Weekly = () =>{
 
     return(
         <>
-        <NavBar/>
         <section className="weekly">
         <h1>Weekly</h1>
         <section className="moviesWeekly">

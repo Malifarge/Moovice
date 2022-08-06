@@ -9,7 +9,7 @@
 
 .weeklyArticle{
     flex-direction: column;
-    width: 150px;
+    width:300px;
     border-radius: 0;
     text-align: center;
 }

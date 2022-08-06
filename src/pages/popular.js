@@ -1,6 +1,5 @@
 
 import { useEffect, useState } from "react"
-import NavBar from "../components/navBar"
 import Card from "../components/card"
 import '../styles/popular.css'
 
@@ -22,10 +21,11 @@ const Popular = () =>{
 
     return(
         <>
-        <NavBar/>
         <section>
         <h1>Popular</h1>
-        <Card movies={movies}/>
+        {movies.map((movie)=>{
+         return <Card movie={movie}/>
+        })}
         </section>
         </>
     )

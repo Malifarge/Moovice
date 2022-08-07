@@ -26,7 +26,7 @@ const Review = () =>{
     }
     
     return (
-        <section>
+        <section className="reviewSection">
             <h1>Reviews</h1>
              {movieReviews.map((movie)=>{
                 return  <article key={movie.author} className="ArticleReview">

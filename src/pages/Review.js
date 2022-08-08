@@ -15,10 +15,6 @@ const Review = () =>{
         fetchMoviesReviews()
     },[])
 
-    useEffect(()=>{
-        console.log(movieReviews[0]);
-    },[movieReviews])
-
     const fetchMoviesReviews = async () => {
         const responseMoviesReviews = await fetch(`https://api.themoviedb.org/3/movie/${param.id}/reviews?api_key=${apiKey}&language=en-US&page=1`)
         const dataMoviesReviews = await responseMoviesReviews.json()
@@ -29,6 +25,7 @@ const Review = () =>{
         <section className="reviewSection">
             <h1>Reviews</h1>
              {movieReviews.map((movie)=>{
+                console.log(movie.author_details.avatar_path);
                 return  <article key={movie.author} className="ArticleReview">
                     <img src={`https://image.tmdb.org/t/p/w300/${movie.author_details.avatar_path}`} alt={movie.author} className="Avatar" />
                     <div>

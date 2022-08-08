@@ -8,11 +8,12 @@ const Weekly = () =>{
 
     const [movies,setMovies]= useState([])
 
-    let moment = require('moment');
-    const TODAY = moment().format("YYYY-MM-DD")
-    const LAST_WEEK = moment().subtract(7, 'd').format("YYYY-MM-DD")
+    
 
     const fetchMoviesWeek = async () => {
+        let moment = require('moment');
+        const TODAY = moment().format("YYYY-MM-DD")
+        const LAST_WEEK = moment().subtract(7, 'd').format("YYYY-MM-DD")
         const response = await fetch(`http://api.themoviedb.org/3/discover/movie?primary_release_date.gte=${LAST_WEEK}&primary_release_date.lte=${TODAY}&api_key=fe35d13ec177e4465861d822f792c0a9`)
         const data = await response.json()
         setMovies(data.results)

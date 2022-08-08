@@ -9,27 +9,33 @@ const Home = () =>{
     const [moviesNowPlaying,setMoviesNowPlaying]= useState([])
     const [moviesTopRated,setMoviesTopRated]= useState([])
     const [moviesUpComing,setMoviesUpComing]= useState([])
-    const [moviesLatest,setMoviesLatest] = useState([])
+    const [moviesLatest,setMoviesLatest] = useState(null)
 
 
-    const fetchMovies = async () => {
-        const responsePlaying = await fetch(` https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}&language=en-US&page=1`)
-        const dataPlaying = await responsePlaying.json()
-        setMoviesNowPlaying(dataPlaying.results)
-        const responseTop = await fetch(`https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}&language=en-US&page=1`)
-        const dataTop = await responseTop.json()
-        setMoviesTopRated(dataTop.results)
-        const responseUpcoming = await fetch (`https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKey}&language=en-US&page=1`)
-        const dataUpcoming = await responseUpcoming.json()
-        setMoviesUpComing(dataUpcoming.results)
-        const responseLatest = await fetch (`https://api.themoviedb.org/3/movie/latest?api_key=${apiKey}&language=en-US`)
-        const dataLatest = await responseLatest.json()
-        setMoviesLatest(dataLatest)
+    const fetchMovies = async (url) => {
+        const response = await fetch(url)
+        const data = await response.json()
+        return data
       }
 
     useEffect(()=>{
-        fetchMovies()
+        setMovies()
+
     },[])
+
+    const setMovies = async () =>{
+        const nowPlayin = await fetchMovies(`https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}&language=en-US`)
+        setMoviesNowPlaying(nowPlayin.results)
+
+        const topRated = await fetchMovies(`https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}&language=en-US`)
+        setMoviesTopRated(topRated.results)
+
+        const upComing = await fetchMovies(`https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKey}&language=en-US`)
+        setMoviesUpComing(upComing.results)
+
+        const latest = await fetchMovies(`https://api.themoviedb.org/3/movie/latest?api_key=${apiKey}&language=en-US`)
+        setMoviesLatest(latest)
+    }
 
     return(
         <>
@@ -37,7 +43,7 @@ const Home = () =>{
             <h1>Home</h1>
 
             <h2>Latest</h2>
-           <CardPres movie={moviesLatest} />
+            {moviesLatest && <CardPres movie={moviesLatest} />}
 
             <h2>Now playing</h2>
             <section className="playing">

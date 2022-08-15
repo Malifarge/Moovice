@@ -27,7 +27,7 @@ const Review = () =>{
              {movieReviews.map((movie)=>{
                 console.log(movie.author_details.avatar_path);
                 return  <article key={movie.author} className="ArticleReview">
-                    <img src={`https://image.tmdb.org/t/p/w300/${movie.author_details.avatar_path}`} alt={movie.author} className="Avatar" />
+                    {!movie.author_details.avatar_path ? <img src={require('../images/anonyme.png')} alt={movie.author} className="Avatar" /> : movie.author_details.avatar_path.includes("/http") ? <img src={movie.author_details.avatar_path.substring(1)} alt={movie.author} className="Avatar" /> : <img src={`https://image.tmdb.org/t/p/w300/${movie.author_details.avatar_path}`} alt={movie.author} className="Avatar" />}
                     <div>
                         <h2>{movie.author}</h2>
                         <p>{movie.content}</p>
